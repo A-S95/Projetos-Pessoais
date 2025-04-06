@@ -1,13 +1,13 @@
 🛠 Tecnologias utilizadas:<p>
-HTML 5
-CSS 3
+HTML 5<p>
+CSS 3<p>
 
 
 
 🎨 Design<p>
-Visual
-Animações Pure CSS
-Implementação de templates e adaptação ao site
+Visual<p>
+Animações Pure CSS<p>
+Implementação de templates e adaptação ao site<p>
 
 
 
