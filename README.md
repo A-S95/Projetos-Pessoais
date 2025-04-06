@@ -4,7 +4,7 @@ CSS 3
 
 
 
-🎨 Design
+🎨 Design<p>
 Visual
 Animações Pure CSS
 Implementação de templates e adaptação ao site
@@ -14,7 +14,7 @@ Implementação de templates e adaptação ao site
 
 
 
-💻 Resultado:
+💻 Resultado:<p>
 
 https://github.com/user-attachments/assets/55c011e9-91d1-4f53-b4cd-6d60e038fd60
 
