@@ -1,4 +1,4 @@
-🛠 Tecnologias utilizadas:
+🛠 Tecnologias utilizadas:<p>
 HTML 5
 CSS 3
 
