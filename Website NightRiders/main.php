@@ -1,15 +1,28 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST['Name'];
-    $email = $_POST['Email'];
-    $modelo = $_POST['Bikemodel'];
-    $registomota = $_POST['Bikeregist'];
-    $mensagem = str_replace(array("\r", "\n"), ' ', $_POST['Message']);
+    // Sanitização básica dos dados
+    $nome = htmlspecialchars($_POST['Name'] ?? '');
+    $email = filter_var($_POST['Email'] ?? '', FILTER_SANITIZE_EMAIL);
+    $modelo = htmlspecialchars($_POST['Bikemodel'] ?? '');
+    $registomota = strtoupper(trim($_POST['Bikeregist'] ?? ''));
+    $mensagem = htmlspecialchars(str_replace(array("\r", "\n"), ' ', $_POST['Message'] ?? ''));
 
-    $linha = "Nome: $nome | Email: $email | Modelo: $modelo | Matricula da Mota: $registomota | Mensagem: $mensagem\n";
+    // Validação da matrícula
+    if (!preg_match('/^[A-Z0-9]{2}-[A-Z0-9]{2}-[A-Z0-9]{2}$/', $registomota)) {
+        $_SESSION['form_msg'] = [
+            'type' => 'error',
+            'text' => "❌ Matrícula inválida. Use o formato XX-XX-XX (letras maiúsculas)."
+        ];
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
 
-    file_put_contents("dados.txt", $linha, FILE_APPEND);
+    // Salvar dados no arquivo (exemplo)
+    $linha = "Nome: $nome | Email: $email | Modelo: $modelo | Matricula: $registomota | Mensagem: $mensagem\n";
+    file_put_contents('formularios.txt', $linha, FILE_APPEND);
 
-    echo "Dados guardados com sucesso!";
+
+    // Redireciona para a página anterior
+    header("Location: confirmacao.php");
+    exit;
 }
-?>
