@@ -14,6 +14,19 @@ $(window).scroll(function() {
     }
  });
 
+ //Formulario
+ // Adicionar os -- na matricula
+ document.getElementById("Bikeregist").addEventListener("input", function(e) {
+  let raw = e.target.value.replace(/[^A-Za-z0-9]/g, '').toUpperCase();
+  let formatted = '';
+
+  if (raw.length > 0) formatted += raw.substring(0, 2);
+  if (raw.length >= 3) formatted += '-' + raw.substring(2, 4);
+  if (raw.length >= 5) formatted += '-' + raw.substring(4, 6);
+
+  e.target.value = formatted;
+});
+
  document.addEventListener("DOMContentLoaded", () => {
     // Check if user prefers reduced motion
     const prefersReducedMotion = window.matchMedia(
